@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import * as C from "./App.styles";
 import * as Photos from "./services/photos";
 import { Photo } from "./types/Photo";
@@ -17,10 +17,22 @@ const App = () => {
     getPhotos();
   }, []);
 
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const file = formData.get("image") as File;
+  };
+
   return (
     <C.Container>
       <C.Area>
         <C.Header>Galeria de Fotos</C.Header>
+
+        <C.UploadForm method="POST" onSubmit={handleFormSubmit}>
+          <input type="file" name="image" />
+          <input type="submit" value="Enviar" />
+        </C.UploadForm>
 
         {loading && (
           <C.ScreenWarning>
