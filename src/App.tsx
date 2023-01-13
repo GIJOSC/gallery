@@ -28,13 +28,13 @@ const App = () => {
           </C.ScreenWarning>
         )}
 
-        {!loading && photos.length > 0 &&
+        {!loading && photos.length > 0 && (
           <C.PhotoList>
-            {photos.map(item, index)=>(
+            {photos.map((item, index) => (
               <div>{item.name}</div>
-            )}
+            ))}
           </C.PhotoList>
-        }
+        )}
       </C.Area>
     </C.Container>
   );
