@@ -35,6 +35,13 @@ const App = () => {
             ))}
           </C.PhotoList>
         )}
+
+        {!loading && photos.length === 0 && (
+          <C.ScreenWarning>
+            <div className="emoji">😞</div>
+            <div>Não há fotos cadastradas.</div>
+          </C.ScreenWarning>
+        )}
       </C.Area>
     </C.Container>
   );
